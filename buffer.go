@@ -64,6 +64,14 @@ func NewBufferString(buf string) *Buffer {
 	return b
 }
 
+// NewBufferWithLength constructs a new buffer with a buffer of the appropriate
+// length from the buffer pool or allocates a new one.
+func NewBufferWithLength(length int) *Buffer {
+	b := new(Buffer)
+	b.buf = b.getBuf(length)
+	return b
+}
+
 func (b *Buffer) grow(n int) int {
 	wOff := len(b.buf)
 	bCap := cap(b.buf)

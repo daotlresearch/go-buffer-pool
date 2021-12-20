@@ -1,3 +1,3 @@
-module github.com/libp2p/go-buffer-pool
+module github.com/daotl/go-buffer-pool
 
 go 1.16
