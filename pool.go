@@ -17,7 +17,6 @@
 //	// Output:
 //	// small2 len: 1024
 //	// large2 len: 4194304
-//
 package pool
 
 import (
@@ -58,7 +57,9 @@ func (p *BufferPool) Get(length int) []byte {
 	if length == 0 {
 		return nil
 	}
-	if length > MaxLength {
+	// Calling this function with a negative length is invalid.
+	// make will panic if length is negative, so we don't have to.
+	if length > MaxLength || length < 0 {
 		return make([]byte, length)
 	}
 	idx := nextLogBase2(uint32(length))
