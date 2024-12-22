@@ -1,3 +1,3 @@
 module github.com/daotl/go-buffer-pool
 
-go 1.21
+go 1.22
