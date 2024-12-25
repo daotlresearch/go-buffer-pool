@@ -64,11 +64,11 @@ func NewBufferString(buf string) *Buffer {
 	return b
 }
 
-// NewBufferWithLength constructs a new buffer with a buffer of the appropriate
-// length from the buffer pool or allocates a new one.
-func NewBufferWithLength(length int) *Buffer {
+// NewBufferWithCap constructs a new buffer with a byte slice of the appropriate
+// cap from the buffer pool or allocates a new one.
+func NewBufferWithCap(length int) *Buffer {
 	b := new(Buffer)
-	b.buf = b.getBuf(length)
+	b.buf = b.getBuf(length)[:0]
 	return b
 }
 
